@@ -29,7 +29,7 @@ function getCalcs() {
 }
 
  // Function to clear input fields after game has run
- function clearInputsClick(event) {
+ function clearInputsClick(event) { // prevents for from reloading
     event.preventDefault()
     document.getElementById('numOne').value = '';
     document.getElementById('numTwo').value = '';
@@ -64,9 +64,9 @@ function equalsClick(event){
     event.preventDefault();
     console.log("equals");
     //generate data
-    numOne = document.getElementById("numOne").value;
+    let numOne = document.getElementById("numOne").value;
     console.log("numOne is", numOne);
-    numTwo = document.getElementById("numTwo").value;
+    let numTwo = document.getElementById("numTwo").value;
      console.log("numTwo is", numTwo);
     //operator is set
     console.log("operator is", operator);

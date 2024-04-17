@@ -23,14 +23,15 @@ let calculations =   [
 ]
 // Here's a wonderful place to make some routes:
 
-// GET /calculations
+// GET /calculations ⬇ GET route. responds to axios request from client side
 app.get ('/calculations',(req, res) => { 
   console.log('GET/ cals from client to sever');
   res.send(calculations); //from /localhost 5001, the get request responds, aka res.send with calculations perameter.
                           // sends back to client side.. this can be viewed in the console.
 })
-// POST /calculations
+// POST /calculations ⬇ POST route. responds to axios request from client side
 function calculateResult(numOne, numTwo, operator) {
+  console.log("POST/ from client side")
   let result = 0; // starting at 0
 
   // Perform the calculation
@@ -51,7 +52,7 @@ function calculateResult(numOne, numTwo, operator) {
     return result;
 }
     app.post('/calculations', (req, res) => {
-      let calc = req.body;
+      let calc = req.body;   // sets the body content from request from lient side into a variable
       console.log(req.body)
     let numOne = Number(calc.numOne);   // Extract data from request body
     let numTwo = Number(calc.numTwo);   //&forced into a number
