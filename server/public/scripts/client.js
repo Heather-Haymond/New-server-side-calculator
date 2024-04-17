@@ -28,7 +28,14 @@ function getCalcs() {
   });
 }
 
-//buttons to push
+ // Function to clear input fields after game has run
+ function clearInputsClick(event) {
+    event.preventDefault()
+    document.getElementById('numOne').value = '';
+    document.getElementById('numTwo').value = '';
+}
+
+//buttons to push functions
 function addClick(event){
     event.preventDefault();
     console.log("add")
@@ -83,4 +90,5 @@ function equalsClick(event){
         console.error('Error:', error);
       });
   };
+
 getCalcs(); // ⬅fuction must me called outside of the function to be utelized & applied
