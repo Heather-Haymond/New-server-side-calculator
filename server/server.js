@@ -21,8 +21,6 @@ let calculations =   [
     result: 4
   }
 ]
-
-
 // Here's a wonderful place to make some routes:
 
 // GET /calculations

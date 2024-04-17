@@ -11,21 +11,25 @@
 
     <form data-testid="calculator">
       <input data-testid="numOne" id ="numOne" placeholder="First Number">
-      <button>+</button>
-      <button>-</button>
-      <button>*</button>
-      <button>/</button>
+      <button onclick="addClick(event)">+</button>
+      <button onclick="subtractClick(event)">-</button>
+      <button onclick="multiplyClick(event)">*</button>
+      <button onclick="devideClick(event)">/</button>
       <input data-testid="numTwo" id = "numTwo" placeholder="Second Number">
-      <button>=</button>
-      <button>C</button>
+      <button onclick="equalsClick(event)">=</button>
+      <button onclick="clearInputsClick(event)">C</button>
     </form>
 
     <section data-testid="recentResult">
-      <ul id="calcList"></ul>
-      <!-- The most recent calculation result goes here. -->
+      <p id = "calcResult">
+      <!-- ⬆ The most recent calculation result goes here. -->
+      </p>
+     
+     
     </section>
 
     <section data-testid="resultHistory"> 
+      <ul id="calcList"></ul>
       <!-- ⬆ The list of calculation results goes here.
           This is where the GET rewuest will store the Data that came 
           back from the server-->
