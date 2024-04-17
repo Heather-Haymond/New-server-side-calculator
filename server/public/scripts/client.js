@@ -84,6 +84,7 @@ function equalsClick(event){
       };
     axios.post('/calculations', calculationData)
       .then(response => {
+        getCalcs()
         console.log('Sent!!:', response.data);
       })
       .catch(error => {
