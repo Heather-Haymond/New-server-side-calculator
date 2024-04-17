@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
-let PORT = process.env.PORT || 5001;
+let PORT = process.env.PORT || 5001; //⬅ when a request is made here to local host, it's sent to the get function = res. 
 
 app.use(express.json());
-app.use(express.static('server/public'));
+app.use(express.static('server/public')); //⬅sends over client side code from axios calls
 
 // Global variable that will contain all of the
-// calculation objects:
+// calculation objects: .. server side manipulates the data. seperation of concerns. adds, edits deletes ect
 let calculations =   [
   {
     numOne: 3,
@@ -28,7 +28,8 @@ let calculations =   [
 // GET /calculations
 app.get ('/calculations',(req, res) => { 
   console.log('GET/ cals from client to sever');
-  res.send(calculations);
+  res.send(calculations); //from /localhost 5001, the get request responds, aka res.send with calculations perameter.
+                          // sends back to client side.. this can be viewed in the console.
 })
 // POST /calculations
 
