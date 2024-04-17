@@ -30,6 +30,51 @@ app.get ('/calculations',(req, res) => {
                           // sends back to client side.. this can be viewed in the console.
 })
 // POST /calculations
+function calculateResult(numOne, numTwo, operator) {
+  let result = 0; // starting at 0
+
+  // Perform the calculation
+  switch (operator) {
+    case '+':
+      result = numOne + numTwo;
+      break;
+    case '-':
+      result = numOne - numTwo;
+      break;
+    case '*':
+      result = numOne * numTwo;
+      break;
+    case '/':
+      result = numOne / numTwo;
+      break;
+    }
+    return result;
+}
+    app.post('/calculations', (req, res) => {
+      let calc = req.body;
+      console.log(req.body)
+    let numOne = Number(calc.numOne);   // Extract data from request body
+    let numTwo = Number(calc.numTwo);   //&forced into a number
+    let operator = calc.operator;    //stores the operator
+    try {
+      let result = calculateResult(numOne, numTwo, operator);
+
+       // Add the result to the calculation object
+       calc.result = result;
+
+       // Add the calculation to the array
+       calculations.push(calc);
+       console.log(calculations);
+ 
+       // Send success response
+       res.status(201).send(calc);
+   } catch (error) {
+       // Send error response
+       res.status(400).send(error.message);
+   }
+ });
+ 
+
 
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:

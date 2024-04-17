@@ -27,4 +27,60 @@ function getCalcs() {
      // -- ⬆ this code handles calculations result <p>
   });
 }
+
+//buttons to push
+function addClick(event){
+    event.preventDefault();
+    console.log("add")
+    operator = "+";
+}
+
+function subtractClick(event){
+    event.preventDefault();
+    console.log("subtract")
+    operator = "-";
+}
+
+function devideClick(event){
+    event.preventDefault();
+    console.log("divide");
+    operator = "/";
+}
+
+function multiplyClick(event){
+    event.preventDefault();
+    console.log("multiply")
+    operator = "*";
+}
+
+function equalsClick(event){
+    event.preventDefault();
+    console.log("equals");
+    //generate data
+    numOne = document.getElementById("numOne").value;
+    console.log("numOne is", numOne);
+    numTwo = document.getElementById("numTwo").value;
+     console.log("numTwo is", numTwo);
+    //operator is set
+    console.log("operator is", operator);
+     // Send calculation data to the server
+    sendCalculationToServer(numOne, numTwo, operator);
+}
+
+// POST ->Create
+  // Function sends new calculations back over to the server
+  function sendCalculationToServer (numOne, numTwo, operator) {  
+    let calculationData = {
+        numOne: numOne,
+        numTwo: numTwo,
+        operator: operator
+      };
+    axios.post('/calculations', calculationData)
+      .then(response => {
+        console.log('Sent!!:', response.data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
 getCalcs(); // ⬅fuction must me called outside of the function to be utelized & applied
